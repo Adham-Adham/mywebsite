@@ -8,6 +8,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="/static/media/favicon.jpg" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Flatterband</title>
         <style>
 *{
@@ -104,6 +106,7 @@ footer{
 	line-height:1.5rem;
 	font-weight:bold;
 	margin:0;
+	
 }
 
 .font-h2{
@@ -131,13 +134,27 @@ footer{
 	background: linear-gradient(to bottom, rgb(255,255,255),rgb(230,230,230));
     border: 1px solid #ddd;
     border-radius: 0.2rem;
-    margin: 0.5rem ;
-    padding: 1rem;
+    margin:center ;
+    padding: 0.5rem;
 }
 
+.rating-list li {
+	float: right;
+	color: #aaaa;
+	padding: 15px 5px;
 	
+  }
 
+.rating-list li:hover,
+.rating-list li:hover ~ li {
+    color: orange;
+}
 
+.rating-list {
+    display: inline-block;
+    list-style:none;
+	background:none;
+}
 
    </style>
     </head>
@@ -154,21 +171,43 @@ footer{
         <main>
 			<h1>Hinweis!</h1>
 			<br>
-			<p>blablLSOAlohblvsbljhvljhjvlj<br>lkvndaphvapi<br>jnpivushdpre<yual</p>
-            <div class="rate_box" style="text-align: left; ">
-				<h1>War diese Info hilfreich?</h1>
-				  <link rel="stylesheet" href="/static/css/rate.css">
-					<input type="radio" id="star5" name="rate" value="5" />
-					<label for="star5" title="text">5 stars</label>
-					<input type="radio" id="star4" name="rate" value="4" />
-					<label for="star4" title="text">4 stars</label>
-					<input type="radio" id="star3" name="rate" value="3" />
-					<label for="star3" title="text">3 stars</label>
-					<input type="radio" id="star2" name="rate" value="2" />
-					<label for="star2" title="text">2 stars</label>
-					<input type="radio" id="star1" name="rate" value="1" />
-					<label for="star1" title="text">1 star</label>
+			<h5>Die Seite, die Sie aufrufen wollen, ist leider zurzeit außerbetrieb.
+			<br>Die kollegen suchen so schnell wie möglich nach einer Lösung.
+			<br><br>
+			Vielen Dank für ihr Verständnis!
+			</h5>
+            <div class="rate_box">
+				{% for post in posts %}
+				<h2>War diese Info hilfreich?</h2>
+				    <ul class="btn btn-light list-inline rating-list">
+					    <li onclick="rate(5, {{ post.id }})">
+						    <i class="fa fa-star {% if post.user_rating > 4 %} checked {% endif %}" title="Rate 5" onclick=""></i></li>
+				      	<li onclick="rate(4, {{ post.id }})">
+						    <i class="fa fa-star {% if post.user_rating > 3 %} checked {% endif %}" title="Rate 4" onclick=""></i></li>
+					    <li onclick="rate(3, {{ post.id }})">
+					     	<i class="fa fa-star {% if post.user_rating > 2 %} checked {% endif %}" title="Rate 3" onclick=""></i></li>
+				     	<li onclick="rate(2, {{ post.id }})">
+					    	<i class="fa fa-star {% if post.user_rating > 1 %} checked {% endif %}" title="Rate 2" onclick=""></i></li>
+					    <li onclick="rate(1, {{ post.id }})">
+					     	<i class="fa fa-star {% if post.user_rating > 0 %} checked {% endif %}" title="Rate 1" onclick=""></i></li>
+				    </ul>
 			</div>
+				{% endfor %}
+				</div>
+				<script>
+					const rate = (rating, post_id) => {
+						fetch(`/rate/${post_id}/${rating}/`, {
+							method: 'GET',
+							headers: {
+								'Content-Type': 'application/json'
+							}
+						}).then(rest => {
+							window.location.reload();
+							
+						})
+					}
+					fetch('http://127.0.0.1:8000//', { headers });
+				</script>
         </main>
         <footer>
             <a class="dsgvo" href="https://www.ovgu.de/datenschutzerklaerung">Datenschutzerklärung nach der DSGVO</a>
