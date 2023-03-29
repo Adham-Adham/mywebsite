@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/static/media/favicon.jpg" />
+        <title>Flatterband</title>
+        <style>
+*{
+	font-family: 'Lucida Grande','Lucida Sans','Open Sans',sans-serif;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration:none;
+	color:#000000;
+}
+
+
+/***** STRUKTUR *****/
+
+body{
+	max-width:980px;
+	font-size: 0.8rem;
+    line-height: 1.125rem;
+	margin:0.8rem auto 0 auto;
+	display:grid;
+	grid-template-areas:
+		"header header"
+		"nav nav"
+		"info info"
+		"main aside"
+		"footer footer";
+	grid-template-columns: auto 27%;
+}
+
+
+
+header{
+	grid-area:header;
+	display:grid;
+	grid-template: auto / auto auto;
+}
+
+nav{
+	grid-area:nav;
+	background-color:#000000;
+	border-radius:0.2rem;
+	height:1.5rem;
+}
+
+
+
+
+nav a:hover{
+	color: #96999C;
+}
+
+main{
+	grid-area:main;
+	margin:0.75rem 0 0 0;
+	border:1px solid #cfd3d6;
+	border-radius:0.2rem;
+	padding:1.25rem 0.95rem 0.75rem;
+}
+
+
+footer{
+	grid-area:footer;
+	margin:0.5rem 0 0 0;
+}
+
+/***** SPECIAL *****/
+
+.header_logo{
+	height:80px;
+}
+
+.service_menu{
+	text-align:right;
+}
+
+.service_menu a{
+	display:inline-block;
+	color:#686a6c;
+	padding:0.1rem 0.25rem;
+	font-size:0.8rem;
+	line-height: 1.25rem;
+	height:1.6rem;
+}
+
+.service_menu a:hover{
+	background-color:#7a003f;
+	color:#ffffff;
+}
+
+
+.font-h1{
+	font-size:1.4rem;
+	line-height:1.5rem;
+	font-weight:bold;
+	margin:0;
+}
+
+.font-h2{
+	font-size:1.1rem;
+	font-weight:bold;
+	margin:1.0rem 0 0.5rem 0;
+ }
+
+
+.dsgvo{
+	border-radius:0.2rem;
+	background-color:#F4F4F4;
+	margin:0 0 0.5rem 0;
+	padding:0.5rem;
+	text-align:center;
+	font-weight:bold;
+	width:100%;
+	display:block;
+}
+
+
+.rate_box {
+	display:block;
+	width:100%;
+	background: linear-gradient(to bottom, rgb(255,255,255),rgb(230,230,230));
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+    margin: 0.5rem ;
+    padding: 1rem;
+}
+
+	
+
+
+
+   </style>
+    </head>
+    <body>
+        <header>
+            <section class="logo">
+                <a href="https://www.ovgu.de"><img src="/static/media/logo_std.png" class="header_logo"></a>
+            </section>
+            <section class="service_menu">
+                <a href="https://www.ovgu.de/impressum.html">Impressum</a>
+            </section>
+        </header>
+        <nav></nav>
+        <main>
+			<h1>Hinweis!</h1>
+			<br>
+			<p>blablLSOAlohblvsbljhvljhjvlj<br>lkvndaphvapi<br>jnpivushdpre<yual</p>
+            <div class="rate_box" style="text-align: left; ">
+				<h1>War diese Info hilfreich?</h1>
+				  <link rel="stylesheet" href="/static/css/rate.css">
+					<input type="radio" id="star5" name="rate" value="5" />
+					<label for="star5" title="text">5 stars</label>
+					<input type="radio" id="star4" name="rate" value="4" />
+					<label for="star4" title="text">4 stars</label>
+					<input type="radio" id="star3" name="rate" value="3" />
+					<label for="star3" title="text">3 stars</label>
+					<input type="radio" id="star2" name="rate" value="2" />
+					<label for="star2" title="text">2 stars</label>
+					<input type="radio" id="star1" name="rate" value="1" />
+					<label for="star1" title="text">1 star</label>
+			</div>
+        </main>
+        <footer>
+            <a class="dsgvo" href="https://www.ovgu.de/datenschutzerklaerung">Datenschutzerklärung nach der DSGVO</a>
+            <noscript><img referrerpolicy="no-referrer-when-downgrade" src="https://webana-1.ovgu.de/matomo.php?idsite=termine.ovgu.de&rec=1" style="border:0" alt="" /></noscript>
+            
+		</footer>
+    </body>
+</html>
+
+{% endblock content %}
